@@ -9,6 +9,13 @@ Simulation::~Simulation()
 {
 }
 
+void Simulation::setMech(Mech* m)
+{
+	heat_capacity_ = m->getHeatCapacity();
+	heat_dissipation_ = m->getHeatDissipation();
+	heat_dissipation_per_tick_ = heat_dissipation_ / GlobalConfig::SIMULATION_TICK_RATE;
+}
+
 double Simulation::getDamage() const
 {
 	return damage_;
@@ -40,7 +47,13 @@ void Simulation::reset()
 void Simulation::tick()
 {
 	processEvents();
+	heat_ += heat_dissipation_per_tick_;
 	emit tickComplete();
+}
+
+void Simulation::stop()
+{
+	in_progress_ = false;
 }
 
 void Simulation::scheduleEvent(EventPtr event_object)

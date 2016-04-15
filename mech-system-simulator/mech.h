@@ -2,17 +2,32 @@
 
 class Mech
 {
+	enum Tech {
+		Clan,
+		InnerSphere
+	};
+
 public:
-	int getInternalHeatSinks() const;
-	int getExternalHeatSinks() const;
+	double getHeatCapacity() const;
+	double getHeatDissipation() const;
 
 	void setEngine(int engine);
 	void setHeatSinks(int heat_sinks);
+	void setSkills(bool cool, bool heat, bool elite);
+	void useDoubleHeatSinks(bool use_double);
 
 protected:
+	// TODO: make this selectable; default to IS for now.
+	Tech tech = InnerSphere;
+
 	int engine_size_;
 	int internal_heat_sinks_;
 	int external_heat_sinks_;
 
-	void calcInternalHeatSinks() { internal_heat_sinks_ = (engine_size_ > 250) ? 10 : (engine_size_ / 25); };
+	bool double_heat_sinks_;
+	bool cool_run_;
+	bool heat_containment_;
+	bool elited_;
+
+	int calcInternalHeatSinks() const;
 };

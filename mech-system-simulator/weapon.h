@@ -1,4 +1,6 @@
 #pragma once
+#include <memory>
+#include <vector>
 
 class Weapon
 {
@@ -18,3 +20,6 @@ protected:
 	double cooldown_;
 	double duration_;
 };
+
+typedef std::shared_ptr<Weapon> WeaponPtr;
+typedef std::vector<WeaponPtr> WeaponLoadout;

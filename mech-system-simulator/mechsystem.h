@@ -19,11 +19,14 @@ public:
 	void pauseSimulation();
 	void resetSimulation();
 	void updateUi();
+
+	void configureMech();
 	void fireAlpha();
 
 private:
 	Ui::MechSystemClass ui;
 	Simulation* s;
+	Mech* m;
 	QTimer* timer;
 };
 

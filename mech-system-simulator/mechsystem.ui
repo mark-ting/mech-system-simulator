@@ -6,125 +6,301 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>674</width>
-    <height>308</height>
+    <width>1351</width>
+    <height>1141</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MechSystem</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="timeDisplay">
-      <property name="text">
-       <string>Time</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QProgressBar" name="heatBar">
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
+   <widget class="QLabel" name="timeDisplay">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>18</y>
+      <width>46</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Time</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="heatBar">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>262</y>
+      <width>631</width>
+      <height>33</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>794</y>
+      <width>511</width>
+      <height>232</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Mech</string>
+    </property>
+    <widget class="QCheckBox" name="doubleHeatsinkCheck">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>60</y>
+       <width>211</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Double Heatsinks</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>40</y>
+       <width>91</width>
+       <height>72</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="techSelectLayout">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="heatLabel">
-          <property name="text">
-           <string>Heat:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="heatDisplay">
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Sunken</enum>
-          </property>
-          <property name="text">
-           <string>h</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="damageLabel">
-          <property name="text">
-           <string>Damage:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="damageDisplay">
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Sunken</enum>
-          </property>
-          <property name="text">
-           <string>d</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-    <item row="3" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="startButton">
+       <widget class="QRadioButton" name="selectSphereButton">
         <property name="text">
-         <string>Start</string>
+         <string>IS</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">factionTech</string>
+        </attribute>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pauseButton">
+       <widget class="QRadioButton" name="selectClanButton">
         <property name="text">
-         <string>Pause</string>
+         <string>Clan</string>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="resetButton">
-        <property name="text">
-         <string>Reset</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="alphaButton">
-        <property name="text">
-         <string>Alpha</string>
-        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">factionTech</string>
+        </attribute>
        </widget>
       </item>
      </layout>
-    </item>
-   </layout>
-   <zorder>heatLabel</zorder>
-   <zorder>damageLabel</zorder>
-   <zorder>damageDisplay</zorder>
-   <zorder>heatLabel</zorder>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>140</y>
+       <width>118</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="extHeatSinkLayout">
+      <item>
+       <widget class="QLabel" name="extHeatSinkLabel">
+        <property name="text">
+         <string>Ext. HS:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="extHeatSinkInput">
+        <property name="maximum">
+         <number>80</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>140</y>
+       <width>73</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="engineLayout">
+      <item>
+       <widget class="QLabel" name="engineLabel">
+        <property name="text">
+         <string>Engine:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="engineSelect">
+        <property name="minimum">
+         <number>100</number>
+        </property>
+        <property name="maximum">
+         <number>400</number>
+        </property>
+        <property name="singleStep">
+         <number>25</number>
+        </property>
+        <property name="value">
+         <number>250</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>121</x>
+       <y>141</y>
+       <width>75</width>
+       <height>68</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="intHeatSinkLayout">
+      <item>
+       <widget class="QLabel" name="intHeatSinkLabel">
+        <property name="text">
+         <string>Int. HS:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="intHeatSinkDisplay">
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <property name="text">
+         <string>inths</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>307</y>
+      <width>228</width>
+      <height>33</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="heatLabel">
+         <property name="text">
+          <string>Heat:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="heatDisplay">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="text">
+          <string>h</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="damageLabel">
+         <property name="text">
+          <string>Damage:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="damageDisplay">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="text">
+          <string>d</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>551</y>
+      <width>638</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="startButton">
+       <property name="text">
+        <string>Start</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pauseButton">
+       <property name="text">
+        <string>Pause</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="resetButton">
+       <property name="text">
+        <string>Reset</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="alphaButton">
+       <property name="text">
+        <string>Alpha</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>674</width>
+     <width>1351</width>
      <height>38</height>
     </rect>
    </property>
@@ -215,4 +391,7 @@
   <slot>pauseSimulation()</slot>
   <slot>fireAlpha()</slot>
  </slots>
+ <buttongroups>
+  <buttongroup name="factionTech"/>
+ </buttongroups>
 </ui>

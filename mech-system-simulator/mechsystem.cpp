@@ -10,12 +10,19 @@ MechSystem::MechSystem(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	m = new Mech();
 	s = new Simulation();
 	timer = new QTimer(this);
 	timer->setTimerType(Qt::PreciseTimer);
 
 	connect(timer, &QTimer::timeout, s, &Simulation::tick);
 	connect(s, &Simulation::tickComplete, this, &MechSystem::updateUi);
+
+	// TODO: move this to manual function
+	configureMech();
+	double debug = m->getHeatDissipation();
+ 	ui.heatBar->setMaximum(m->getHeatCapacity());
+	s->setMech(m);
 }
 
 MechSystem::~MechSystem()
@@ -39,9 +46,16 @@ void MechSystem::resetSimulation()
 	s->reset();
 }
 
+void MechSystem::configureMech()
+{
+	m->setEngine(ui.engineSelect->value());
+	m->setHeatSinks(ui.extHeatSinkInput->value());
+	m->useDoubleHeatSinks(ui.doubleHeatsinkCheck->isChecked());
+}
+
 void MechSystem::fireAlpha()
 {
-	Weapon w = Weapon(10, 10, 10, 1.0);
+	Weapon w = Weapon(9, 7, 3.25, 1.0);
 	std::shared_ptr<WeaponEvent> we = (std::shared_ptr<WeaponEvent>) new WeaponEvent(w);
 	s->scheduleEvent(we);
 }
