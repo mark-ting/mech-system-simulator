@@ -1,5 +1,5 @@
 #pragma once
-#include "GlobalConfig.h"
+#include "simulationconfig.h"
 #include <string>
 #include <memory>
 

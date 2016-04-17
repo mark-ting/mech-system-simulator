@@ -163,12 +163,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="simulationconfig.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mech.cpp" />
     <ClCompile Include="mechsystem.cpp" />
     <ClCompile Include="simulation.cpp" />
     <ClCompile Include="simulationevent.cpp" />
-    <ClCompile Include="simulationtime.cpp" />
     <ClCompile Include="weapon.cpp" />
     <ClCompile Include="weaponevent.cpp" />
   </ItemGroup>
@@ -216,9 +216,8 @@
     <ClInclude Include="mechconfig.h" />
     <ClInclude Include="simulationevent.h" />
     <ClInclude Include="GeneratedFiles\ui_mechsystem.h" />
-    <ClInclude Include="globalconfig.h" />
+    <ClInclude Include="simulationconfig.h" />
     <ClInclude Include="mech.h" />
-    <ClInclude Include="simulationtime.h" />
     <ClInclude Include="weapon.h" />
     <ClInclude Include="weaponevent.h" />
     <CustomBuild Include="simulation.h">

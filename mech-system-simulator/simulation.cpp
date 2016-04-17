@@ -13,7 +13,7 @@ void Simulation::setMech(Mech* m)
 {
 	heat_capacity_ = m->getHeatCapacity();
 	heat_dissipation_ = m->getHeatDissipation();
-	heat_dissipation_per_tick_ = heat_dissipation_ / GlobalConfig::SIMULATION_TICK_RATE;
+	heat_dissipation_per_tick_ = heat_dissipation_ / SimulationConfig::SIMULATION_TICK_RATE;
 }
 
 double Simulation::getDamage() const

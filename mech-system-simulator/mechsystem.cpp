@@ -1,7 +1,7 @@
 #include "mechsystem.h"
 #include <QDateTime>
 #include "simulation.h"
-#include "GlobalConfig.h"
+#include "simulationconfig.h"
 
 #include "weapon.h"
 #include "weaponevent.h"
@@ -33,7 +33,7 @@ MechSystem::~MechSystem()
 
 void MechSystem::startSimulation()
 {
-	timer->start(GlobalConfig::SIMULATION_TICK_TIME);
+	timer->start(SimulationConfig::SIMULATION_TICK_TIME);
 }
 
 void MechSystem::pauseSimulation()

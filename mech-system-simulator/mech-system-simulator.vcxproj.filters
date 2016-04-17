@@ -68,10 +68,10 @@
     <ClCompile Include="weapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="simulationtime.cpp">
+    <ClCompile Include="mech.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mech.cpp">
+    <ClCompile Include="simulationconfig.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -96,9 +96,6 @@
     <ClInclude Include="mech.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="globalconfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="simulationevent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -108,10 +105,10 @@
     <ClInclude Include="weapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="simulationtime.h">
+    <ClInclude Include="mechconfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mechconfig.h">
+    <ClInclude Include="simulationconfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

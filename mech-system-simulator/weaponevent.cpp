@@ -1,9 +1,9 @@
 #include "weaponevent.h"
-#include "simulationtime.h"
+#include "simulationconfig.h"
 
 WeaponEvent::WeaponEvent(Weapon weapon) : SimulationEvent(weapon.getDuration())
 {
-	int total_ticks = SimulationTime::secondsToTicks(weapon.getDuration());
+	int total_ticks = SimulationConfig::secondsToTicks(weapon.getDuration());
 	ticks_remaining_ = total_ticks;
 	damage_per_tick_ = weapon.getDamage() / total_ticks;
 	heat_per_tick_ = weapon.getHeat() / total_ticks;
