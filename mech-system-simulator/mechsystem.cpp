@@ -17,8 +17,6 @@ MechSystem::MechSystem(QWidget *parent)
 
 	connect(timer, &QTimer::timeout, s, &Simulation::tick);
 	connect(s, &Simulation::tickComplete, this, &MechSystem::updateUi);
-
-	// TODO: move this to manual function
 }
 
 MechSystem::~MechSystem()
@@ -32,7 +30,9 @@ void MechSystem::startSimulation()
 	if (s->isPaused()) {
 		s->pause();  // unpause
 	}
-	else {
+	else if (!s->isStarted())
+	{
+		s->start();
 		configureMech();
 		ui.heatBar->setMaximum(m->getHeatCapacity());
 		s->setMech(m);
@@ -59,16 +59,15 @@ void MechSystem::stopSimulation()
 
 void MechSystem::configureMech()
 {
-	m->setEngine(ui.engineSelect->value());
-	m->setHeatSinks(ui.extHeatSinkInput->value());
-	m->useDoubleHeatSinks(ui.doubleHeatsinkCheck->isChecked());
+	m->setInternalHeatSinks(ui.intHeatSinkInput->value());
+	m->setExternalHeatSinks(ui.extHeatSinkInput->value());
+	m->setDoubleHeatSinks(ui.doubleHeatsinkCheck->isChecked());
 }
 
 void MechSystem::fireAlpha()
 {
 	Weapon w = Weapon(9, 7, 3.25, 1.0);
-	std::shared_ptr<WeaponEvent> we = (std::shared_ptr<WeaponEvent>) new WeaponEvent(w);
-	s->scheduleEvent(we);
+	w.fireWeapon(s);
 }
 
 void MechSystem::updateUi()

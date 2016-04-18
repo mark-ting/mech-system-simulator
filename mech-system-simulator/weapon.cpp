@@ -1,4 +1,5 @@
 #include "weapon.h"
+#include "weaponevent.h"
 
 Weapon::~Weapon()
 {
@@ -22,4 +23,10 @@ double Weapon::getCooldown() const
 double Weapon::getDuration() const
 {
 	return duration_;
+}
+
+void Weapon::fireWeapon(Simulation * s)
+{
+	std::shared_ptr<WeaponEvent> we = (std::shared_ptr<WeaponEvent>) new WeaponEvent(*this);
+	s->scheduleEvent(we);
 }

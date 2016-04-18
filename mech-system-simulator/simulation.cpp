@@ -26,6 +26,11 @@ void Simulation::pause()
 	paused_ = !paused_;
 }
 
+bool Simulation::isStarted() const
+{
+	return started_;
+}
+
 bool Simulation::isPaused() const
 {
 	return paused_;
@@ -56,13 +61,27 @@ void Simulation::addHeat(double heat)
 	heat_ += heat;
 }
 
+void Simulation::start()
+{
+	started_ = true;
+}
+
+void Simulation::stop()
+{
+	started_ = false;
+}
+
 void Simulation::reset()
 {
+	started_ = false;
 	paused_ = false;
+
 	event_queue_.clear();
 	m = NULL;
-	heat_ = 0.0;
+
 	damage_ = 0.0;
+	heat_ = 0.0;
+	heat_capacity_ = 30.0;
 	emit tickComplete();
 }
 

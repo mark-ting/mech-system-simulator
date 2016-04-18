@@ -20,15 +20,19 @@ public:
 	void initialize();
 	void pause();
 
+	bool isStarted() const;
 	bool isPaused() const;
+
 	double getDamage() const;
 	double getHeat() const;
 	double getHeatPercent() const;
 
-	void addHeat(double heat);
 	void addDamage(double damage);
+	void addHeat(double heat);
 
 	public slots:
+	void start();
+	void stop();
 	void reset();
 	void tick();
 	void scheduleEvent(EventPtr event_object);
@@ -37,6 +41,7 @@ signals:
 	void tickComplete();
 
 private:
+	bool started_;  // prevent simulation from being "started" again (avoid reinitialization errors)
 	bool paused_;
 
 	typedef std::vector<EventPtr> SimulationQueue;

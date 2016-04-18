@@ -8,19 +8,24 @@ class Mech
 	};
 
 public:
+	Mech();
+	~Mech();
+
 	double getHeatCapacity() const;
 	double getHeatDissipation() const;
 
-	void setEngine(int engine);
-	void setHeatSinks(int heat_sinks);
-	void setSkills(bool cool, bool heat, bool elite);
-	void useDoubleHeatSinks(bool use_double);
+	void setInternalHeatSinks(int heat_sinks);
+	void setExternalHeatSinks(int heat_sinks);
+
+	void setDoubleHeatSinks(bool use_double);
+	void setCoolRun(bool unlocked);
+	void setHeatContainment(bool unlocked);
+	void setElited(bool elited);
 
 protected:
 	// TODO: make this selectable; default to IS for now.
-	Tech tech = InnerSphere;
+	Tech tech;
 
-	int engine_size_;
 	int internal_heat_sinks_;
 	int external_heat_sinks_;
 
@@ -29,5 +34,6 @@ protected:
 	bool heat_containment_;
 	bool elited_;
 
-	int calcInternalHeatSinks() const;
+	double baseHeatCapacity() const;
+	double baseHeatDissipation() const;
 };

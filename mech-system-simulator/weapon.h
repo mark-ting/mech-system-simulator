@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <vector>
+#include "simulation.h"
 
 class Weapon
 {
@@ -13,6 +14,8 @@ public:
 	double getHeat() const;
 	double getCooldown() const;
 	double getDuration() const;
+
+	void fireWeapon(Simulation* s);
 
 protected:
 	double damage_;
