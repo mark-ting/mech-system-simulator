@@ -17,7 +17,8 @@ public:
 	private slots:
 	void startSimulation();
 	void pauseSimulation();
-	void resetSimulation();
+	void stopSimulation();
+
 	void updateUi();
 
 	void configureMech();

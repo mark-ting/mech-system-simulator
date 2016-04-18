@@ -9,11 +9,26 @@ Simulation::~Simulation()
 {
 }
 
-void Simulation::setMech(Mech* m)
+void Simulation::setMech(Mech* mech)
+{
+	m = mech;
+}
+
+void Simulation::initialize()
 {
 	heat_capacity_ = m->getHeatCapacity();
 	heat_dissipation_ = m->getHeatDissipation();
 	heat_dissipation_per_tick_ = heat_dissipation_ / SimulationConfig::SIMULATION_TICK_RATE;
+}
+
+void Simulation::pause()
+{
+	paused_ = !paused_;
+}
+
+bool Simulation::isPaused() const
+{
+	return paused_;
 }
 
 double Simulation::getDamage() const
@@ -24,6 +39,11 @@ double Simulation::getDamage() const
 double Simulation::getHeat() const
 {
 	return heat_;
+}
+
+double Simulation::getHeatPercent() const
+{
+	return 100 * heat_ / heat_capacity_;
 }
 
 void Simulation::addDamage(double damage)
@@ -38,7 +58,9 @@ void Simulation::addHeat(double heat)
 
 void Simulation::reset()
 {
+	paused_ = false;
 	event_queue_.clear();
+	m = NULL;
 	heat_ = 0.0;
 	damage_ = 0.0;
 	emit tickComplete();
@@ -47,13 +69,14 @@ void Simulation::reset()
 void Simulation::tick()
 {
 	processEvents();
-	heat_ += heat_dissipation_per_tick_;
-	emit tickComplete();
-}
 
-void Simulation::stop()
-{
-	in_progress_ = false;
+	if (heat_ + heat_dissipation_per_tick_ > 0) {
+		heat_ += heat_dissipation_per_tick_;
+	}
+	else {
+		heat_ = 0.0;
+	}
+	emit tickComplete();
 }
 
 void Simulation::scheduleEvent(EventPtr event_object)

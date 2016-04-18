@@ -13,10 +13,17 @@ public:
 	Simulation();
 	~Simulation();
 
-	void setMech(Mech* m);
+	// Assign Mech to Simulation
+	void setMech(Mech* mech);
 
+	// Lock-in values from Mech, Environment, Quirks, etc.
+	void initialize();
+	void pause();
+
+	bool isPaused() const;
 	double getDamage() const;
 	double getHeat() const;
+	double getHeatPercent() const;
 
 	void addHeat(double heat);
 	void addDamage(double damage);
@@ -24,14 +31,13 @@ public:
 	public slots:
 	void reset();
 	void tick();
-	void stop();
 	void scheduleEvent(EventPtr event_object);
 
 signals:
 	void tickComplete();
 
 private:
-	bool in_progress_;
+	bool paused_;
 
 	typedef std::vector<EventPtr> SimulationQueue;
 	SimulationQueue event_queue_;

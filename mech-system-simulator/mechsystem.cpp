@@ -19,10 +19,6 @@ MechSystem::MechSystem(QWidget *parent)
 	connect(s, &Simulation::tickComplete, this, &MechSystem::updateUi);
 
 	// TODO: move this to manual function
-	configureMech();
-	double debug = m->getHeatDissipation();
- 	ui.heatBar->setMaximum(m->getHeatCapacity());
-	s->setMech(m);
 }
 
 MechSystem::~MechSystem()
@@ -33,17 +29,32 @@ MechSystem::~MechSystem()
 
 void MechSystem::startSimulation()
 {
+	if (s->isPaused()) {
+		s->pause();  // unpause
+	}
+	else {
+		configureMech();
+		ui.heatBar->setMaximum(m->getHeatCapacity());
+		s->setMech(m);
+		s->initialize();
+	}
+
 	timer->start(SimulationConfig::SIMULATION_TICK_TIME);
+	ui.statusBar->showMessage("Running");
 }
 
 void MechSystem::pauseSimulation()
 {
 	timer->stop();
+	s->pause();
+	ui.statusBar->showMessage("Paused");
 }
 
-void MechSystem::resetSimulation()
+void MechSystem::stopSimulation()
 {
+	timer->stop();
 	s->reset();
+	ui.statusBar->showMessage("Stopped");
 }
 
 void MechSystem::configureMech()
@@ -64,7 +75,14 @@ void MechSystem::updateUi()
 {
 	// TODO: Remove the time display or use it somewhere else
 	ui.timeDisplay->setText(QTime::currentTime().toString());
-	ui.damageDisplay->setText(QString::number(s->getDamage()));
-	ui.heatDisplay->setText(QString::number(s->getHeat()));
+	ui.damageDisplay->setText(QString::number(s->getDamage(), 'f', 2));
+	if (s->getHeatPercent() >= 100) {
+		ui.heatDisplay->setText("<font color='red'>" + QString::number(s->getHeat(), 'f', 2) + "</font>");
+		ui.heatPercentDisplay->setText("<font color='red'>" + QString::number(s->getHeatPercent(), 'f', 2) + "</font>");
+	}
+	else {
+		ui.heatDisplay->setText(QString::number(s->getHeat(), 'f', 2));
+		ui.heatPercentDisplay->setText(QString::number(s->getHeatPercent(), 'f', 1));
+	}
 	ui.heatBar->setValue((int)s->getHeat());
 }
