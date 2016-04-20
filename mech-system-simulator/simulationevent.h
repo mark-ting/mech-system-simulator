@@ -2,16 +2,17 @@
 #include "simulationconfig.h"
 #include <string>
 #include <memory>
+#include <vector>
 
 class Simulation;
 class SimulationEvent
 {
 public:
-	SimulationEvent(double time);
+	SimulationEvent();
 	~SimulationEvent();
 
 	std::string getName() const;
-	bool isComplete();
+	virtual bool isComplete() const;
 	virtual void run(Simulation* s) = 0;
 
 protected:
@@ -22,3 +23,4 @@ protected:
 };
 
 typedef std::shared_ptr<SimulationEvent> EventPtr;
+typedef std::vector<EventPtr> EventQueue;

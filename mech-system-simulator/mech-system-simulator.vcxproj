@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cooldownevent.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_mechsystem.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -214,6 +215,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cooldownevent.h" />
     <ClInclude Include="mechconfig.h" />
     <ClInclude Include="simulationevent.h" />
     <ClInclude Include="GeneratedFiles\ui_mechsystem.h" />

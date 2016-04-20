@@ -10,8 +10,11 @@ MechSystem::MechSystem(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	loadWeapons();
+
 	m = new Mech();
 	s = new Simulation();
+	s->addWeapon(armory[0]);
 	timer = new QTimer(this);
 	timer->setTimerType(Qt::PreciseTimer);
 
@@ -66,8 +69,8 @@ void MechSystem::configureMech()
 
 void MechSystem::fireAlpha()
 {
-	Weapon w = Weapon(9, 7, 3.25, 1.0);
-	w.fireWeapon(s);
+	s->fireWeapon(0);
+	s->fireWeapon(1);
 }
 
 void MechSystem::updateUi()

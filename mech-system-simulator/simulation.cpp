@@ -11,13 +11,18 @@ Simulation::~Simulation()
 
 void Simulation::setMech(Mech* mech)
 {
-	m = mech;
+	m_ = mech;
+}
+
+void Simulation::addWeapon(std::shared_ptr<Weapon> weapon)
+{
+	loadout_.push_back(weapon);
 }
 
 void Simulation::initialize()
 {
-	heat_capacity_ = m->getHeatCapacity();
-	heat_dissipation_ = m->getHeatDissipation();
+	heat_capacity_ = m_->getHeatCapacity();
+	heat_dissipation_ = m_->getHeatDissipation();
 	heat_dissipation_per_tick_ = heat_dissipation_ / SimulationConfig::SIMULATION_TICK_RATE;
 }
 
@@ -87,7 +92,7 @@ void Simulation::reset()
 	paused_ = false;
 
 	event_queue_.clear();
-	m = NULL;
+	m_ = NULL;
 
 	damage_ = 0.0;
 	heat_ = 0.0;
@@ -106,6 +111,13 @@ void Simulation::tick()
 		heat_ = 0.0;
 	}
 	emit tickComplete();
+}
+
+void Simulation::fireWeapon(int weapon_index)
+{
+	if (weapon_index < loadout_.size()) {
+		loadout_[weapon_index]->fire(this);
+	}
 }
 
 void Simulation::scheduleEvent(EventPtr event_object)

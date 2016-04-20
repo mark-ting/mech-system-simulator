@@ -1,8 +1,7 @@
 #include "simulationevent.h"
 
-SimulationEvent::SimulationEvent(double time)
+SimulationEvent::SimulationEvent()
 {
-	ticks_remaining_ = time / SimulationConfig::SIMULATION_TICK_TIME;
 }
 
 SimulationEvent::~SimulationEvent()
@@ -14,7 +13,7 @@ std::string SimulationEvent::getName() const
 	return event_name_;
 }
 
-bool SimulationEvent::isComplete()
+bool SimulationEvent::isComplete() const
 {
 	return !(ticks_remaining_ > 0);
 }

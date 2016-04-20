@@ -1,8 +1,9 @@
 #pragma once
 #include <QObject>
-#include <Vector>
-#include <Memory>
+#include <vector>
+#include <memory>
 #include "mech.h"
+#include "weapon.h"
 #include "simulationevent.h"
 
 class Simulation : public QObject
@@ -15,6 +16,7 @@ public:
 
 	// Assign Mech to Simulation
 	void setMech(Mech* mech);
+	void addWeapon(std::shared_ptr<Weapon> weapon);
 
 	// Lock-in values from Mech, Environment, Quirks, etc.
 	void initialize();
@@ -38,6 +40,7 @@ public:
 	void stop();
 	void reset();
 	void tick();
+	void fireWeapon(int weapon_index);
 	void scheduleEvent(EventPtr event_object);
 
 signals:
@@ -47,9 +50,9 @@ private:
 	bool started_;  // flag to avoid being "started" again (avoid reinit errors)
 	bool paused_;
 
-	typedef std::vector<EventPtr> SimulationQueue;
-	SimulationQueue event_queue_;
-	Mech* m;
+	EventQueue event_queue_;
+	WeaponLoadout loadout_;
+	Mech* m_;
 
 	double damage_;
 	double heat_;
