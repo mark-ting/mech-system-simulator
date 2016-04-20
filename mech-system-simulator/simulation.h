@@ -27,6 +27,9 @@ public:
 	double getHeat() const;
 	double getHeatPercent() const;
 
+	double getHeatCapacity() const;
+	double getHeatDissipation() const;
+
 	void addDamage(double damage);
 	void addHeat(double heat);
 
@@ -41,7 +44,7 @@ signals:
 	void tickComplete();
 
 private:
-	bool started_;  // prevent simulation from being "started" again (avoid reinitialization errors)
+	bool started_;  // flag to avoid being "started" again (avoid reinit errors)
 	bool paused_;
 
 	typedef std::vector<EventPtr> SimulationQueue;
@@ -51,7 +54,7 @@ private:
 	double damage_;
 	double heat_;
 	double heat_capacity_;
-	double heat_dissipation_;
+	double heat_dissipation_;  // per second value
 	double heat_dissipation_per_tick_;
 
 	void processEvents();

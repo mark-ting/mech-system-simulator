@@ -51,6 +51,16 @@ double Simulation::getHeatPercent() const
 	return 100 * heat_ / heat_capacity_;
 }
 
+double Simulation::getHeatCapacity() const
+{
+	return heat_capacity_;
+}
+
+double Simulation::getHeatDissipation() const
+{
+	return heat_dissipation_;
+}
+
 void Simulation::addDamage(double damage)
 {
 	damage_ += damage;

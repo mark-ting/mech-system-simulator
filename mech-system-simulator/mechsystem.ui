@@ -191,7 +191,7 @@
           <item>
            <widget class="QLabel" name="intHeatSinkLabel">
             <property name="text">
-             <string>Ext. HS:</string>
+             <string>Internal Heat Sinks</string>
             </property>
            </widget>
           </item>
@@ -209,7 +209,7 @@
           <item>
            <widget class="QLabel" name="extHeatSinkLabel">
             <property name="text">
-             <string>Ext. HS:</string>
+             <string>External Heat Sinks</string>
             </property>
            </widget>
           </item>
