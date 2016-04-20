@@ -140,7 +140,7 @@
        <item>
         <widget class="QPushButton" name="alphaButton">
          <property name="text">
-          <string>Alpha</string>
+          <string>Large Laser</string>
          </property>
         </widget>
        </item>

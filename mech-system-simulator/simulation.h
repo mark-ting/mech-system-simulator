@@ -61,4 +61,5 @@ private:
 	double heat_dissipation_per_tick_;
 
 	void processEvents();
+	void resetWeapons();
 };

@@ -92,6 +92,7 @@ void Simulation::reset()
 	paused_ = false;
 
 	event_queue_.clear();
+	resetWeapons();
 	m_ = NULL;
 
 	damage_ = 0.0;
@@ -134,5 +135,12 @@ void Simulation::processEvents()
 		else {
 			event_queue_[i]->run(this);
 		}
+	}
+}
+
+void Simulation::resetWeapons()
+{
+	for (int i = 0; i < loadout_.size(); i++) {
+		loadout_[i]->reload();
 	}
 }

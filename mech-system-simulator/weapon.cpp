@@ -49,12 +49,11 @@ void Weapon::reload()
 	off_cooldown_ = true;
 }
 
-
 std::vector<std::shared_ptr<Weapon>> armory;
 
 // Load weapons into memory
 void loadWeapons()
 {
-//	armory.push_back((std::shared_ptr<Weapon>) new Weapon(1, 1, 0.05, 0.05)); // Test Weapon
+	//	armory.push_back((std::shared_ptr<Weapon>) new Weapon(1, 1, 0.05, 0.05)); // Test Weapon
 	armory.push_back((std::shared_ptr<Weapon>) new Weapon(9, 7, 3.25, 1.0));  // Large Laser
 }
