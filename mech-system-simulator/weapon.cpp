@@ -3,8 +3,24 @@
 #include "cooldownevent.h"
 #include "simulation.h"
 
+Weapon::Weapon(std::unordered_map<std::string, std::string> details) :
+	id_(std::stoi(details["Weapon ID"])),
+	name_(details["Name"]),
+	category_(details["Category"]),
+
+	damage_(std::stod(details["Damage"])),
+	cooldown_(std::stod(details["Cool Down"])),
+	heat_(std::stod(details["Heat"])),
+	duration_(std::stod(details["Duration"]))
+{}
+
 Weapon::~Weapon()
 {
+}
+
+std::string Weapon::getName() const
+{
+	return name_;
 }
 
 double Weapon::getDamage() const
@@ -54,6 +70,6 @@ std::vector<std::shared_ptr<Weapon>> armory;
 // Load weapons into memory
 void loadWeapons()
 {
-	//	armory.push_back((std::shared_ptr<Weapon>) new Weapon(1, 1, 0.05, 0.05)); // Test Weapon
-	armory.push_back((std::shared_ptr<Weapon>) new Weapon(9, 7, 3.25, 1.0));  // Large Laser
+	// armory.push_back((std::shared_ptr<Weapon>) new Weapon(1, 1, 0.05, 0.05));  // Test Weapon
+	armory.push_back((WeaponPtr) new Weapon(9, 7, 3.25, 1.0));  // Large Laser
 }

@@ -80,6 +80,9 @@
     <ClCompile Include="cooldownevent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dataparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mechsystem.h">
@@ -120,5 +123,13 @@
     <ClInclude Include="cooldownevent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="dataparser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="weapons.csv">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

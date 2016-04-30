@@ -1,0 +1,21 @@
+Weapon ID,Name,Category,Faction,Damage,Cool Down,Heat,Min. Range,Opt. Range,Max. Range,Duration
+1000,AutoCannon20,Ballistic,InnerSphere,20,4,6,0,270,540,0
+1001,MediumLaser,Energy,InnerSphere,5,3,4,0,270,540,0.9
+1003,SmallLaser,Energy,InnerSphere,3,2.25,2,0,135,270,0.75
+1005,ERLargeLaser,Energy,InnerSphere,9,3.25,8,0,675,1350,1.25
+1006,ERPPC,Energy,InnerSphere,10,4,14,0,810,1620,0
+1008,LargeLaser,Energy,InnerSphere,9,3.25,7,0,450,900,1
+1009,PPC,Energy,InnerSphere,10,4,9.5,90,540,1080,0
+1010,LargePulseLaser,Energy,InnerSphere,11,3.25,7,0,365,730,0.67
+1011,MediumPulseLaser,Energy,InnerSphere,6,3,4,0,220,440,0.6
+1012,SmallPulseLaser,Energy,InnerSphere,4,2.25,2,0,110,220,0.5
+1018,AutoCannon2,Ballistic,InnerSphere,2,0.72,0.8,0,720,1440,0
+1019,AutoCannon5,Ballistic,InnerSphere,5,1.66,1,0,620,1240,0
+1020,AutoCannon10,Ballistic,InnerSphere,10,2.5,3,0,450,900,0
+1211,ClanERSmallLaser,Energy,Clan,5,2.25,3,0,200,360,1
+1212,ClanERMediumLaser,Energy,Clan,7,3,6,0,405,688,1.15
+1213,ClanERLargeLaser,Energy,Clan,11,3.25,10,0,740,1480,1.5
+1214,ClanSmallPulseLaser,Energy,Clan,6,2.25,3,0,165,297,0.75
+1215,ClanMediumPulseLaser,Energy,Clan,8,3,6,0,330,561,0.85
+1216,ClanLargePulseLaser,Energy,Clan,13,3.25,10,0,600,1200,1.12
+1217,ClanERPPC,Energy,Clan,10,4,14,0,810,1620,0

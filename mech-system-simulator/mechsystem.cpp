@@ -1,10 +1,11 @@
 #include "mechsystem.h"
 #include <QDateTime>
+#include <QFileDialog>
 #include "simulation.h"
 #include "simulationconfig.h"
-
 #include "weapon.h"
 #include "weaponevent.h"
+#include "dataparser.h"
 
 MechSystem::MechSystem(QWidget *parent)
 	: QMainWindow(parent)
@@ -14,7 +15,21 @@ MechSystem::MechSystem(QWidget *parent)
 
 	m = new Mech();
 	s = new Simulation();
-	s->addWeapon(armory[0]);
+
+	// DEV: Add Large Laser as Test Weapon
+	//s->addWeapon(armory[0]);
+	// END DEV
+
+	// TEST
+	// Debugging CSV loading
+	loadWeaponsFromCsv();
+	// END TEST
+
+	// DEV: Add IS AC20 as Test Weapon
+	s->addWeapon(csv_armory[0]);
+	// END DEV
+
+
 	timer = new QTimer(this);
 	timer->setTimerType(Qt::PreciseTimer);
 
@@ -31,10 +46,12 @@ MechSystem::~MechSystem()
 void MechSystem::startSimulation()
 {
 	if (s->isPaused()) {
-		s->pause();  // unpause
+		// Resume if paused
+		s->pause();
 	}
 	else if (!s->isStarted())
 	{
+		// Start if not yet started
 		s->start();
 		configureMech();
 		ui.heatBar->setMaximum(m->getHeatCapacity());
@@ -70,7 +87,6 @@ void MechSystem::configureMech()
 void MechSystem::fireAlpha()
 {
 	s->fireWeapon(0);
-	s->fireWeapon(1);
 }
 
 void MechSystem::updateUi()
