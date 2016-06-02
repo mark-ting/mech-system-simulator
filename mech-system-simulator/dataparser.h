@@ -11,3 +11,4 @@ int countCsvFields(std::ifstream& file);
 std::vector<std::string> getCsvFields(std::ifstream& file);
 
 extern WeaponLoadout csv_armory;
+extern WeaponCatalog weapon_catalog;

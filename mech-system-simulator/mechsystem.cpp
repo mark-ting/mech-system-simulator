@@ -11,7 +11,6 @@ MechSystem::MechSystem(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
-	loadWeapons();
 
 	m = new Mech();
 	s = new Simulation();
@@ -23,12 +22,17 @@ MechSystem::MechSystem(QWidget *parent)
 	// TEST
 	// Debugging CSV loading
 	loadWeaponsFromCsv();
+
 	// END TEST
 
-	// DEV: Add IS AC20 as Test Weapon
+	// DEV
+	// Add IS AC20 as Test Weapon
 	s->addWeapon(csv_armory[0]);
+	// Add IS ERPPC as Test Weapon
+	s->addWeapon(weapon_catalog["ERPPC"]);
+	// Should result in a total of 30 damage.
+	
 	// END DEV
-
 
 	timer = new QTimer(this);
 	timer->setTimerType(Qt::PreciseTimer);
@@ -57,6 +61,8 @@ void MechSystem::startSimulation()
 		ui.heatBar->setMaximum(m->getHeatCapacity());
 		s->setMech(m);
 		s->initialize();
+
+		// TODO: List weapons in ui.weaponList here.
 	}
 
 	timer->start(SimulationConfig::SIMULATION_TICK_TIME);
@@ -86,7 +92,7 @@ void MechSystem::configureMech()
 
 void MechSystem::fireAlpha()
 {
-	s->fireWeapon(0);
+	s->fireAlpha();
 }
 
 void MechSystem::updateUi()

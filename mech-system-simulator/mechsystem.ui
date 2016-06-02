@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>583</width>
-    <height>594</height>
+    <width>1349</width>
+    <height>941</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>18</x>
-      <y>18</y>
-      <width>322</width>
-      <height>253</height>
+      <x>19</x>
+      <y>19</y>
+      <width>640</width>
+      <height>757</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -140,7 +140,7 @@
        <item>
         <widget class="QPushButton" name="alphaButton">
          <property name="text">
-          <string>Large Laser</string>
+          <string>Alpha</string>
          </property>
         </widget>
        </item>
@@ -152,6 +152,31 @@
         <string>Mech</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="doubleHeatsinkCheck">
+          <property name="text">
+           <string>Double Heatsinks</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QVBoxLayout" name="intHeatSinkLayout">
+          <item>
+           <widget class="QLabel" name="intHeatSinkLabel">
+            <property name="text">
+             <string>Internal Heat Sinks</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="intHeatSinkInput">
+            <property name="maximum">
+             <number>80</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item row="0" column="0">
          <layout class="QVBoxLayout" name="techSelectLayout">
           <item>
@@ -179,31 +204,6 @@
           </item>
          </layout>
         </item>
-        <item row="0" column="1">
-         <widget class="QCheckBox" name="doubleHeatsinkCheck">
-          <property name="text">
-           <string>Double Heatsinks</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <layout class="QVBoxLayout" name="intHeatSinkLayout">
-          <item>
-           <widget class="QLabel" name="intHeatSinkLabel">
-            <property name="text">
-             <string>Internal Heat Sinks</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="intHeatSinkInput">
-            <property name="maximum">
-             <number>80</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
         <item row="1" column="1">
          <layout class="QVBoxLayout" name="extHeatSinkLayout">
           <item>
@@ -225,6 +225,9 @@
        </layout>
       </widget>
      </item>
+     <item>
+      <widget class="QListWidget" name="weaponList"/>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -233,8 +236,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>583</width>
-     <height>21</height>
+     <width>1349</width>
+     <height>38</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuProgram">

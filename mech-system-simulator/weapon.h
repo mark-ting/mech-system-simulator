@@ -44,8 +44,5 @@ typedef std::shared_ptr<Weapon> WeaponPtr;
 typedef std::vector<WeaponPtr> WeaponLoadout;
 typedef std::unordered_map<std::string, std::string> WeaponDescriptor;
 
-// Load all weapons into memory
-// TODO: make this load programmatically, and not just a single IS LL
-extern WeaponLoadout armory;
-
-void loadWeapons();
+// TODO: Use this instead of a WeaponLoadout data structure
+typedef std::unordered_map<std::string, WeaponPtr> WeaponCatalog;

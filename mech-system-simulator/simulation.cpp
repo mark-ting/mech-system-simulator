@@ -66,6 +66,17 @@ double Simulation::getHeatDissipation() const
 	return heat_dissipation_;
 }
 
+std::vector<std::string> Simulation::getWeaponLoadout() const
+{
+	std::vector<std::string> loadout_list;
+	// Fire everything!
+	for (auto const& weapon : loadout_) {
+		loadout_list.push_back(weapon->getName());
+	}
+
+	return loadout_list;
+}
+
 void Simulation::addDamage(double damage)
 {
 	damage_ += damage;
@@ -114,8 +125,17 @@ void Simulation::tick()
 	emit tickComplete();
 }
 
+void Simulation::fireAlpha()
+{
+	// Fire everything!
+	for (auto const& weapon : loadout_) {
+		weapon->fire(this);
+	}
+}
+
 void Simulation::fireWeapon(int weapon_index)
 {
+	// Ensure weapon index within range
 	if (weapon_index < loadout_.size()) {
 		loadout_[weapon_index]->fire(this);
 	}

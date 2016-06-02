@@ -6,6 +6,7 @@
 std::vector<std::shared_ptr<Mech>> csv_hangar;
 //std::unordered_map<int, std::shared_ptr<Weapon>> csv_armory;
 WeaponLoadout csv_armory;
+WeaponCatalog weapon_catalog;
 
 void loadWeaponsFromCsv()
 {
@@ -40,7 +41,9 @@ void loadWeaponsFromCsv()
 	}
 
 	for (auto const& descriptor : descriptor_list) {
-		csv_armory.push_back((WeaponPtr) new Weapon(descriptor));
+		WeaponPtr weapon = (WeaponPtr) new Weapon(descriptor);
+		csv_armory.push_back(weapon);
+		weapon_catalog.insert({ weapon->getName(), weapon });
 	}
 }
 

@@ -32,6 +32,8 @@ public:
 	double getHeatCapacity() const;
 	double getHeatDissipation() const;
 
+	std::vector<std::string> getWeaponLoadout() const;
+
 	void addDamage(double damage);
 	void addHeat(double heat);
 
@@ -40,6 +42,7 @@ public:
 	void stop();
 	void reset();
 	void tick();
+	void fireAlpha();
 	void fireWeapon(int weapon_index);
 	void scheduleEvent(EventPtr event_object);
 
